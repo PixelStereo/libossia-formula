@@ -23,11 +23,7 @@ class Libossia < Formula
   def install
     system "mkdir", "build"
     Dir.chdir('build')
-    args = %W[ ]
-    #args << "-DOSSIA_PYTHON=1" if build.with? "with-python3"
-    #args << "-DOSSIA_PYTHON=1" if build.with? "with-python"
-    #args << "-DQML=1" if build.with? "with-qml"
-    system "cmake", "..", args
+    system "cmake", "..", '-DOSSIA_PYTHON'
     system "make", "-j8"
     Dir.chdir('..')
     if build.with? "python3"
